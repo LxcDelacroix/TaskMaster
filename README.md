@@ -16,7 +16,7 @@ Avant de lancer le projet, assurez-vous d'avoir installé les outils suivants :
 1. Clonez le dépôt Git :
 
    ```
-   git clone https://github.com/LxcDelacroix/TaskMaster/tree/main```
+   git clone https://github.com/LxcDelacroix/TaskMaster```
 
   ```
 cd taskmaster

@@ -21,6 +21,8 @@ cd taskmaster
    
 Créez la base de données :
 
+composer i
+
 php bin/console doctrine:database:create
 
 Appliquez les migrations :

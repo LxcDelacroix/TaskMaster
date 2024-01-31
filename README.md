@@ -18,27 +18,26 @@ Avant de lancer le projet, assurez-vous d'avoir installé les outils suivants :
    ```
    git clone https://github.com/LxcDelacroix/TaskMaster```
 
-  ```
 cd taskmaster
-Créez la base de données :```
+Créez la base de données :
 
   ```
-php bin/console doctrine:database:create```
+php bin/console doctrine:database:create
 
 Appliquez les migrations :
 
   ```
-php bin/console doctrine:migrations:migrate```
+php bin/console doctrine:migrations:migrate
 
 Chargez les fixtures si nécessaire :
 
   ```
-php bin/console doctrine:fixtures:load```
+php bin/console doctrine:fixtures:load
 
 Lancement du serveur
 Pour lancer le serveur Symfony en arrière-plan, utilisez la commande suivante :
 
   ```
-symfony serve -d```
+symfony serve -d
 
 Le serveur sera disponible à l'adresse http://localhost:8000.

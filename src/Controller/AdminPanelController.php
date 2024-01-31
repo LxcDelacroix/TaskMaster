@@ -1,5 +1,4 @@
 <?php
-// AdminPanelController.php
 
 namespace App\Controller;
 

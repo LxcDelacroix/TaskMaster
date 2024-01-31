@@ -24,19 +24,15 @@ class ListController extends AbstractController
     #[Route('{_locale}/list', name: 'app_list')]
     public function index(Request $request): Response
     {
-        // Récupérer l'utilisateur actuel
         $user = $this->getUser();
 
         if ($user instanceof UserInterface) {
-            // Récupérer l'ID de l'utilisateur
             $userId = $user->getId();
 
-            // Récupérer toutes les Todolists de l'utilisateur actuel avec leurs ID
             $todolists = $this->entityManager
                 ->getRepository(Todolist::class)
                 ->findBy(['user' => $userId]);
 
-            // Récupérer toutes les tâches associées à chaque todolist
             $tasks = [];
             foreach ($todolists as $todolist) {
                 $tasks[$todolist->getId()] = $this->entityManager
@@ -44,7 +40,6 @@ class ListController extends AbstractController
                     ->findBy(['todolist' => $todolist->getId()]);
             }
 
-            // Créer un nouveau formulaire de tâche
             $task = new Task();
             $form = $this->createForm(NewTaskType::class, $task);
             $form->handleRequest($request);
@@ -54,19 +49,15 @@ class ListController extends AbstractController
                 $this->entityManager->persist($task);
                 $this->entityManager->flush();
 
-                // Redirigez l'utilisateur vers la même page après avoir ajouté la tâche
                 return $this->redirectToRoute('app_list');
             }
 
-            // Passer les Todolists, les tâches et le formulaire de création de tâches à la vue
             return $this->render('list/index.html.twig', [
                 'todolists' => $todolists,
                 'tasks' => $tasks,
                 'form' => $form->createView(),
             ]);
         } else {
-            // Gérer le cas où aucun utilisateur n'est connecté
-            // Redirection vers la page de connexion, affichage d'un message d'erreur, etc.
             return $this->redirectToRoute('app_login');
         }
     }

@@ -1,6 +1,5 @@
 <?php
 
-// src/Controller/NewListController.php
 namespace App\Controller;
 
 use App\Entity\Todolist;

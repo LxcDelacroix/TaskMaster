@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{"MyLists"|trans}}{% endblock %}
+
+{% block body %}
+
+{% include 'includes/navbar.html.twig' %}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="example-wrapper">
+                <h1 class="mb-4">{{"MyLists"|trans}}</h1>
+                
+                <div class="mb-4 border rounded p-3">
+                    <h2 class="mb-3">{{"CreateTask"|trans}}</h2>
+                    {{ form_start(form) }}
+                    <div class="form-group mb-2">
+                        {{ form_widget(form.name, { 'attr': {'class': 'form-control', 'placeholder': 'Nom de la tâche'} }) }}
+                    </div>
+                    <div class="form-group mb-2">
+                        {{ form_widget(form.description, { 'attr': {'class': 'form-control', 'placeholder': 'Description de la tâche'} }) }}
+                    </div>
+                    <div class="form-group mb-2">
+                        {{ form_widget(form.todolist, { 'attr': {'class': 'form-control', 'placeholder': 'Créer premièrement une To Do List'} }) }}
+                    </div>
+                    <button type="submit" class="btn btn-primary">{{"Add"|trans}}</button>
+                    {{ form_end(form) }}
+                </div>
+                
+                {% for todolist in todolists %}
+                    <div class="card mb-3">
+                        <div class="card-header todolist-name" data-toggle="collapse" data-target="#tasks-{{ todolist.id }}" style="cursor: pointer;">
+                            {{ todolist.title }}
+                        </div>
+                        <div id="tasks-{{ todolist.id }}" class="collapse">
+                            <div class="card-body">
+                                <table class="table">
+                                    <tbody>
+                                        {% for task in todolist.tasks %}
+                                            <tr>
+                                                <td>{{ task.name }}</td>
+                                                <td>{{ task.description }}</td>
+                                                <td class="d-flex justify-content-between align-items-center">
+                                                    <a href="{{ path('app_edit_task', {'id': task.id}) }}" class="btn btn-primary">{{"Edit"|trans}}</a>
+                                                    <form method="post" action="{{ path('app_delete_task', {'id': task.id}) }}">
+                                                        <button class="btn btn-danger">{{"Delete"|trans}}</button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const todolistNames = document.querySelectorAll('.todolist-name');
+    todolistNames.forEach((name) => {
+        name.addEventListener('click', function() {
+            const targetId = this.getAttribute('data-target');
+            const target = document.querySelector(targetId);
+            target.classList.toggle('show');
+        });
+    });
+</script>
+
+{% include 'includes/footer.html.twig' %}
+
+{% endblock %}

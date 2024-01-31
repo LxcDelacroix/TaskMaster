@@ -1,0 +1,117 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{"AdminDashboard"|trans}}{% endblock %}
+
+{% block body %}
+
+{% include 'includes/navbar.html.twig' %}
+    <div class="container mt-5">
+        <h1>{{"AdminDashboard"|trans}}</h1>
+
+        <div class="mt-4">
+            <ul class="nav nav-pills">
+                <li class="nav-item">
+                    <a class="nav-link active" id="users-tab" data-toggle="pill" href="#users">{{"Users"|trans}}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="todolists-tab" data-toggle="pill" href="#todolists">{{"ToDoLists"|trans}}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="tasks-tab" data-toggle="pill" href="#tasks">{{"Tasks"|trans}}</a>
+                </li>
+            </ul>
+            <div class="tab-content mt-3">
+                <div class="tab-pane fade show active" id="users">
+                    <h2>{{"Users"|trans}}</h2>
+                    <h4 class="text-danger">{{"UserWarning"|trans}}</h4>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">{{"Username"|trans}}</th>
+                                <th scope="col">{{"Roles"|trans}}</th>
+                                <th scope="col">{{"Mail"|trans}}</th>
+                                <th scope="col">{{"Action"|trans}}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for user in users %}
+                                <tr>
+                                    <td>{{ user.id }}</td>
+                                    <td>{{ user.username }}</td>
+                                    <td>{{ user.roles|join(', ') }}</td>
+                                    <td>{{ user.mail }}</td>
+                                    <td>
+                                        <form method="post" action="{{ path('app_delete_user', {'id': user.id}) }}">
+                                            <button class="btn btn-danger">{{"Delete"|trans}}</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tab-pane fade" id="todolists">
+                    <h2>Listes de Tâches</h2>
+                    <h4 class="text-danger">{{"ToDoListWarning"|trans}}</h4>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">{{"Title"|trans}}</th>
+                                <th scope="col">{{"User"|trans}}</th>
+                                <th scope="col">{{"Action"|trans}}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for todolist in todolists %}
+                                <tr>
+                                    <td>{{ todolist.id }}</td>
+                                    <td>{{ todolist.title }}</td>
+                                    <td>{{ todolist.user.getId }} - {{ todolist.user.getUsername }}</td>
+                                    <td>
+                                        <form method="post" action="{{ path('app_delete_todolist', {'id': todolist.id}) }}">
+                                            <button class="btn btn-danger">{{"Delete"|trans}}</button>
+                                        </form>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tab-pane fade" id="tasks">
+                    <h2>Tâches</h2>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">{{"Name"|trans}}</th>
+                                <th scope="col">{{"Description"|trans}}</th>
+                                <th scope="col">{{"ToDoList"|trans}}</th>
+                                <th scope="col">{{"Action"|trans}}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for task in tasks %}
+                                <tr>
+                                    <td>{{ task.id }}</td>
+                                    <td>{{ task.name }}</td>
+                                    <td>{{ task.description }}</td>
+                                    <td>{{ task.todolist.getId }}</td>
+                                    <td>
+                                        <form method="post" action="{{ path('app_delete_task_admin', {'id': task.id}) }}">
+                                            <button class="btn btn-danger">{{"Delete"|trans}}</button>
+                                        </form>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{% include 'includes/footer.html.twig' %}
+{% endblock %}

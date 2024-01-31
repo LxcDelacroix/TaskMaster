@@ -1,0 +1,16 @@
+<footer class="footer mt-auto py-3 fixed-bottom bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 text-center text-md-start">
+                <span>TaskMaster</span>
+            </div>
+            <div class="col-md-6 text-center text-md-end">
+                {% if app.request.locale == 'en' %}
+                    <a href="{{ path(app.request.get('_route'), app.request.attributes.get('_route_params')|merge({'_locale': 'fr'})) }}" class="btn btn-link">EN</a>
+                {% else %}
+                    <a href="{{ path(app.request.get('_route'), app.request.attributes.get('_route_params')|merge({'_locale': 'en'})) }}" class="btn btn-link">FR</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</footer>

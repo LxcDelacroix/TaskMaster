@@ -1,0 +1,25 @@
+{# templates/new_task/index.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}{{"NewList"|trans}}{% endblock %}
+
+{% block body %}
+{% include 'includes/navbar.html.twig' %}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h1 class="mt-5">{{"CreateNewList"|trans}}</h1>
+                <div class="mb-3 mt-3">
+                    {{form_start(form)}}
+                    {{ form_label(form.title, 'Titre de la Liste', {'class': 'form-label'}) }}
+                    {{ form_widget(form.title, {'attr': {'class': 'form-control', 'placeholder': 'Entrez le titre de la Liste'}}) }}
+                    <button type="submit" class="mt-3 btn btn-primary">{{"CreateList"|trans}}</button>
+                    {{form_end(form)}}
+                </div>
+        </div>
+    </div>
+</div>
+{% include 'includes/footer.html.twig' %}
+{% endblock %}

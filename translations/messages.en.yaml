@@ -1,0 +1,37 @@
+Welcome: Welcome to
+Sui: Sui
+AdminDashboard : Admin Dashboard
+Users : Users
+User : User
+ToDoLists: ToDoLists
+ToDoList: ToDoList
+Tasks: Tasks
+Task: Task
+UserWarning: In order to delete a user, please check that this user has no more To Do List.
+Username: Username
+Role: Role
+Roles: Roles
+Mail: Mail
+Action: Action
+Title: Title
+Description: Description
+Password: Password
+Delete: Delete
+ToDoListWarning: Deleting a ToDoList will delete all associated tasks.
+MyLists: My lists
+NewList: New list
+Admin: Admin
+LogOut: Log Out
+LogIn: Log In
+Register: Register
+EditTask: Edit a task
+SaveEdit: Save changes
+CreateTask: Create a task
+Add: Add
+Edit: Edit
+CreateNewList: Create a new list
+CreateList: Create list
+Terme: I accept the terms and conditions
+Id: Identifiant
+
+

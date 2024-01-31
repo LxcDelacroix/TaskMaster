@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand m-2" href="{{ path('app_home') }}">TaskMaster</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        {% if app.user %}
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{{path('app_list')}}">{{"MyLists"|trans}}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{path('app_new_list')}}">{{"NewList"|trans}}</a>
+            </li>
+        </ul>
+        {% endif %}
+    </div>
+    <div class="my-2 my-lg-0">
+        {% if app.user %}
+        {% if 'ROLE_ADMIN' in app.user.roles %}
+        <a class="btn btn-outline-secondary m-2" href="{{ path('app_admin_panel') }}">{{"Admin"|trans}}</a>
+                    {% endif %}
+            <a class="btn btn-outline-danger m-2" href="{{ path('app_logout') }}">{{"LogOut"|trans}}</a>
+        {% else %}
+            <a class="btn btn-outline-success m-2" href="{{ path('app_register') }}">{{"Register"|trans}}</a>
+            <a class="btn btn-outline-primary m-2" href="{{ path('app_login')}}">{{"LogIn"|trans}}</a>
+        {% endif %}
+    </div>
+</nav>

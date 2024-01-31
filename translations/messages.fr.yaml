@@ -1,0 +1,35 @@
+Welcome: Bienvenue sur
+Sui: Sui
+AdminDashboard : Tableau de bord Administrateur
+Users : Utilisateurs
+User : Utilisateur
+ToDoLists: Listes de tâches
+ToDoList: Liste de tâches
+Tasks: Tâches
+Task: Tâche
+UserWarning: Afin de supprimer un utilisateur veuillez vérifier que ce dernier n'a plus de To Do List.
+Username: Nom d'utilisateur
+Role: Rôle
+Roles: Rôles
+Mail: Mail
+Action: Action
+Title: Titre
+Description: Description
+Password: Mot de passe
+Delete: Supprimer
+ToDoListWarning: Supprimer une liste de tâches entraînera la suppression de toutes les tâches associées.
+MyLists: Mes listes
+NewList: Nouvelle liste
+Admin: Administrateur
+LogOut: Déconnexion
+LogIn: Connexion
+Register: Inscription
+EditTask: Modifier une tâche
+SaveEdit: Sauvegarder les modifications
+CreateTask: Créer une tâche
+Add: Ajouter
+Edit: Modifier
+CreateNewList: Créer une nouvelle liste
+CreateList: Créer la liste
+Terme: J'accepte les termes et conditions
+Id: Identifiant

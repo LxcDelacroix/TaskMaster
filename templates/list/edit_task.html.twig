@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+{% include 'includes/navbar.html.twig' %}
+
+    <div class="container">
+        <h1 class="mt-5 mb-4 text-center">{{"EditTask"|trans}}</h1>
+
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                {{ form_start(form, {'attr': {'class': 'form'}}) }}
+                    <div class="mb-3">
+                        {{ form_label(form.name, 'Nom de la Tâche', {'label_attr': {'class': 'form-label'}}) }}
+                        {{ form_widget(form.name, {'attr': {'class': 'form-control', 'placeholder': 'Nom de la Tâche'}}) }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form_label(form.description, 'Description de la Tâche', {'label_attr': {'class': 'form-label'}}) }}
+                        {{ form_widget(form.description, {'attr': {'class': 'form-control', 'placeholder': 'Description de la Tâche'}}) }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form_label(form.todolist, 'Liste de Tâches', {'label_attr': {'class': 'form-label'}}) }}
+                        {{ form_widget(form.todolist, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <button type="submit" class="btn btn-success btn-block">{{"SaveEdit"|trans}}</button>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+    {% include 'includes/footer.html.twig' %}
+
+{% endblock %}

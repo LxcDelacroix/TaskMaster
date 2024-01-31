@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TaskMaster{% endblock %}
+
+{% block body %}
+    {% include 'includes/navbar.html.twig' %}
+
+    <div class="container-fluid d-flex justify-content-center align-items-center" style="height: calc(100vh - 200px);">
+        <div class="text-center">
+            <h1>{{"Welcome"|trans}} TaskMaster </h1>
+        </div>
+    </div>
+
+    {% include 'includes/footer.html.twig' %}
+{% endblock %}

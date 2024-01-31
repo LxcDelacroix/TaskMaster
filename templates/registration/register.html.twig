@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{"Register"|trans}}{% endblock %}
+
+{% block body %}
+{% include 'includes/navbar.html.twig' %}
+
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-6">
+                <div class="border rounded p-4">
+                    <h1 class="text-center mb-5">{{"Register"|trans}}</h1>
+
+                    {{ form_errors(registrationForm) }}
+
+                    {{ form_start(registrationForm) }}
+                        <div class="form-group m-3">
+                            {{ form_widget(registrationForm.mail, {'attr': {'class': 'form-control', 'placeholder': 'Adresse mail'}}) }}
+                        </div>
+                        <div class="form-group m-3">
+                            {{ form_widget(registrationForm.username, {'attr': {'class': 'form-control', 'placeholder': 'Nom d\'utilisateur'}}) }}
+                        </div>
+                        <div class="form-group m-3">
+                            {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'form-control', 'placeholder': 'Mot de passe'}}) }}
+                        </div>
+                        <div class="form-group form-check m-3">
+                            {{ form_widget(registrationForm.agreeTerms, {'attr': {'class': 'form-check-input'}}) }}
+                            <label class="form-check-label" for="{{ registrationForm.agreeTerms.vars.id }}">{{"Terme"|trans}}</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block m-3">{{"Register"|trans}}</button>
+                    {{ form_end(registrationForm) }}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include 'includes/footer.html.twig' %}
+{% endblock %}

@@ -43,5 +43,5 @@ Le serveur sera disponible à l'adresse http://localhost:8000.
 
 ##Identifiant des Users
 
-admin : [id : john_doe , mot de passe : john_doe123]
-admin : [id : jane_doe , mot de passe : jane_doe456]
+admin : [id : john_doe , mot de passe : admin57]
+admin : [id : jane_doe , mot de passe : jane_doe57]

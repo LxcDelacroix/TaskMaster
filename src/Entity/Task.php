@@ -23,6 +23,9 @@ class Task
     #[ORM\JoinColumn(nullable: false)]
     private ?Todolist $todolist = null;
 
+    #[ORM\ManyToOne(inversedBy: 'tasks')]
+    private ?TypeTask $type = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -60,6 +63,18 @@ class Task
     public function setTodolist(?Todolist $todolist): static
     {
         $this->todolist = $todolist;
+
+        return $this;
+    }
+
+    public function getType(): ?TypeTask
+    {
+        return $this->type;
+    }
+
+    public function setType(?TypeTask $type): static
+    {
+        $this->type = $type;
 
         return $this;
     }

@@ -25,6 +25,9 @@ class Todolist
     #[ORM\OneToMany(mappedBy: 'todolist', targetEntity: Task::class)]
     private Collection $tasks;
 
+    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    private ?ImageToDoList $Image = null;
+
     public function __construct()
     {
         $this->tasks = new ArrayCollection();
@@ -85,6 +88,18 @@ class Todolist
                 $task->setTodolist(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getImage(): ?ImageToDoList
+    {
+        return $this->Image;
+    }
+
+    public function setImage(?ImageToDoList $Image): static
+    {
+        $this->Image = $Image;
 
         return $this;
     }
